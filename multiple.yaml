@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: installing httpd
+    yum:
+     name: httpd
+     state: present
+  - name: replacing default html file to custom file
+    copy:
+     src: abc.html
+     dest: /var/www/html/abc.html
+  - name: starting the httpd service
+    service:
+     name: httpd
+     state: started
+     
+    
+
+  
+
+

@@ -1,0 +1,18 @@
+---
+- name: Create users on all machines
+  hosts: all
+  become: yes  # Use 'become' to run commands as a superuser
+  vars:
+    users:
+      - nagaraj
+      - santhi
+      - usha
+      - niranjan
+      - sathya
+
+  tasks:
+    - name: Ensure users are present
+      user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"

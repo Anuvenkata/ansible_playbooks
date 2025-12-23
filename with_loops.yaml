@@ -1,0 +1,14 @@
+- name: Install packages with loops
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install packages
+      yum:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - git
+        - zip
+        - vim
+        - unzip
+        - tree

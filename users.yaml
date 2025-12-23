@@ -1,0 +1,15 @@
+
+users:
+  - name: venkat
+    password: "admin@123"
+  - name: anu
+    password: "admin@123"
+  - name: kushal
+    password: "admin@123"
+  - name: hamsini
+    password: "admin@123"
+  - name: rama
+    password: "admin@123"
+  - name: krishna
+    password: "admin@123"
+

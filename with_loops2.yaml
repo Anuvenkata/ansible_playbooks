@@ -1,0 +1,14 @@
+- name: Install packages with with_items
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install packages
+      yum:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - git
+        - zip
+        - vim
+        - unzip
+        - tree

@@ -1,0 +1,23 @@
+---
+- name: Create users on all machines
+  hosts: all
+  become: yes  # Use 'become' to run commands as a superuser
+  vars_files:
+    - users1.yaml
+
+  tasks:
+    - name: ensure users are present
+      user: 
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: creating  a file
+      file:
+        path: "/tmp/ansible_test_file_{{ item }}.txt"
+        state: touch
+        owner: "{{ item }}"
+        group: "{{ item }}"
+        mode: '0644'
+      loop: "{{ users }}"
+           

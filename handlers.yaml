@@ -1,0 +1,29 @@
+- name: Install and configure Apache HTTP server
+  hosts: all  
+  gather_facts: no
+  become: true  
+  vars_files:
+   - vars.yaml
+  tasks:
+    - name: Install httpd
+      yum:  
+        name: httpd
+        state: present
+
+    - name: Ensure httpd is started and enabled
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Copy custom index.html to the web root
+      template:
+        src: index.html  # Path to your local index.html file
+        dest: /var/www/html/index.html  # Destination on the target server
+      notify:
+        - restarting httpd
+  handlers:
+    - name: restarting httpd
+      service:
+        name: httpd
+        state: restarted

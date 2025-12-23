@@ -1,0 +1,13 @@
+---
+- name: create a file on all hosts
+  hosts: all
+  become: yes
+  tasks:
+   - name: create a file
+     file:
+        path: /tmp/ansiable_test_file.txt
+        state: touch
+        owner: ec2-user
+        group: ec2-user
+        mode: '0644'
+

@@ -1,0 +1,24 @@
+---
+- name: Install packages without loops
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Git
+      yum:
+        name: git
+        state: absent
+
+    - name: Install Zip
+      yum:
+        name: zip
+        state: absent
+
+    - name: Install Vim
+      yum:
+        name: vim
+        state: absent
+
+    - name: install unzip
+      yum:
+        name: unzip
+        state: absent
